@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://bpmn.io/schema/bpmn">
+  <process id="zuihou" isExecutable="true">
+    <startEvent id="StartEvent_1"></startEvent>
+    <userTask id="Activity_1ommv6y" name="总经理" activiti:assignee="zhangsan"></userTask>
+    <exclusiveGateway id="Gateway_13h4tcm"></exclusiveGateway>
+    <userTask id="Activity_080xasg" name="人事" activiti:assignee="wangwu"></userTask>
+    <endEvent id="Event_1s1w70o"></endEvent>
+    <sequenceFlow id="Flow_06d69jv" sourceRef="StartEvent_1" targetRef="Gateway_13h4tcm"></sequenceFlow>
+    <sequenceFlow id="Flow_0h39pmp" name="大于两天" sourceRef="Gateway_13h4tcm" targetRef="Activity_1ommv6y">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${day>2}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="Flow_1g7rr96" sourceRef="Activity_1ommv6y" targetRef="Activity_080xasg"></sequenceFlow>
+    <sequenceFlow id="Flow_1497zmh" sourceRef="Activity_1ojkwb4" targetRef="Activity_080xasg"></sequenceFlow>
+    <sequenceFlow id="Flow_03o8urr" sourceRef="Activity_080xasg" targetRef="Event_1s1w70o"></sequenceFlow>
+    <userTask id="Activity_1ojkwb4" name="部门经理" activiti:assignee="lisi"></userTask>
+    <sequenceFlow id="Flow_0emfu2r" name="小于等于两天" sourceRef="Gateway_13h4tcm" targetRef="Activity_1ojkwb4">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${day<=2}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_zuihou">
+    <bpmndi:BPMNPlane bpmnElement="zuihou" id="BPMNPlane_zuihou">
+      <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="BPMNShape_StartEvent_1">
+        <omgdc:Bounds height="30.0" width="30.0" x="179.0" y="99.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Activity_1ommv6y" id="BPMNShape_Activity_1ommv6y">
+        <omgdc:Bounds height="80.0" width="100.0" x="260.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Gateway_13h4tcm" id="BPMNShape_Gateway_13h4tcm">
+        <omgdc:Bounds height="39.999999999999986" width="40.0" x="284.9999957531691" y="91.99999862909318"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Activity_080xasg" id="BPMNShape_Activity_080xasg">
+        <omgdc:Bounds height="80.0" width="100.0" x="430.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Event_1s1w70o" id="BPMNShape_Event_1s1w70o">
+        <omgdc:Bounds height="28.0" width="28.0" x="642.0" y="242.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Activity_1ojkwb4" id="BPMNShape_Activity_1ojkwb4">
+        <omgdc:Bounds height="80.0" width="99.99999999999994" x="429.99998718500166" y="76.99999770522123"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="Flow_1497zmh" id="BPMNEdge_Flow_1497zmh">
+        <omgdi:waypoint x="479.9999907696165" y="156.99999770522123"></omgdi:waypoint>
+        <omgdi:waypoint x="479.9999964153851" y="220.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0h39pmp" id="BPMNEdge_Flow_0h39pmp">
+        <omgdi:waypoint x="305.65359105555405" y="131.34640332670827"></omgdi:waypoint>
+        <omgdi:waypoint x="308.64864751337393" y="220.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_03o8urr" id="BPMNEdge_Flow_03o8urr">
+        <omgdi:waypoint x="530.0" y="258.8636363636364"></omgdi:waypoint>
+        <omgdi:waypoint x="642.0036143023708" y="256.31809967494615"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_1g7rr96" id="BPMNEdge_Flow_1g7rr96">
+        <omgdi:waypoint x="360.0" y="260.0"></omgdi:waypoint>
+        <omgdi:waypoint x="430.0" y="260.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0emfu2r" id="BPMNEdge_Flow_0emfu2r">
+        <omgdi:waypoint x="324.4444402709696" y="112.55555411129271"></omgdi:waypoint>
+        <omgdi:waypoint x="429.99998718500166" y="115.57142647066901"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_06d69jv" id="BPMNEdge_Flow_06d69jv">
+        <omgdi:waypoint x="208.99756572187522" y="113.72977339503042"></omgdi:waypoint>
+        <omgdi:waypoint x="285.35397830570156" y="112.35398118162558"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
